@@ -37,3 +37,6 @@ Os decorator, na verdade, precisam retornar uma função com três parâmetros:
     ) {
         ... corpo da função ...
     }
+
+O parm descriptor nos dá acesso a implementação do método decorado através 
+de descriptor.value.
