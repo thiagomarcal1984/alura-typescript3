@@ -1,0 +1,17 @@
+Rode npm install para instalar as dependências de package.json.
+
+A estrutura da aplicação mudou: antes a pasta /app era a fonte, e a pasta 
+/dist/js era o destino. Agora, a fonte é /app/src e o destino é /app/dist/js.
+
+Um requisito não-funcional para a aplicação é a velocidade do tempo de execução
+de certos métodos. Isso pode ser obtido por meio da biblioteca performance:
+
+    public metodo(){
+        const t1 = performance.now();
+        ... lógica do método ...
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método: ${(t2-t1)/1000} segundos.`)
+    }
+
+MAS essa mensuração invade a lógica de negócio dos métodos. É possível fazer 
+essa mensuração de outra forma.

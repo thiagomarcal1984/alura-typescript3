@@ -20,8 +20,9 @@ export class NegociacaoController {
     }
 
     public adiciona(): void {
+        const t1 = performance.now();
         /*
-            Zé, você já viu isso?
+        Zé, você já viu isso?
         */
         const negociacao = Negociacao.criaDe(
             this.inputData.value, 
@@ -31,13 +32,15 @@ export class NegociacaoController {
      
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView
-                .update('Apenas negociações em dias úteis são aceitas');
+            .update('Apenas negociações em dias úteis são aceitas');
             return ;
         }
-
+        
         this.negociacoes.adiciona(negociacao);
         this.limparFormulario();
         this.atualizaView();
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método adiciona: ${(t2-t1)/1000} segundos.`)
     }
 
     private ehDiaUtil(data: Date) {
