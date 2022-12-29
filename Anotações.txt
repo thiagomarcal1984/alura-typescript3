@@ -15,3 +15,16 @@ de certos métodos. Isso pode ser obtido por meio da biblioteca performance:
 
 MAS essa mensuração invade a lógica de negócio dos métodos. É possível fazer 
 essa mensuração de outra forma.
+
+Os decorators do TypeScript podem ajudar na mensuração do tempo de execução.
+Decorator é uma função que é executada junto com o método anotado nele:
+    @logarTempoDeExecucao() // Use @nome_do_decorator() para decorar o método.
+    public adiciona(): void {
+        // lógica do método.
+    }
+
+Para que o TypeScript permita o uso de decorators, precisamos inserir uma outra
+opção no compilador: a experimentalDecorators.
+
+O código ainda não vai compilar, porque a declaração da função do decorator 
+está incompleta.
