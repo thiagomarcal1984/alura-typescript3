@@ -40,3 +40,8 @@ Os decorator, na verdade, precisam retornar uma função com três parâmetros:
 
 O parm descriptor nos dá acesso a implementação do método decorado através 
 de descriptor.value.
+
+O método apply em uma função recuperada de descriptor.value usa dois 
+parâmetros: o contexto onde a função será executada (fornecendo "this", o
+próprio objeto que contém o método original será o contexto) e os argumentos
+do método (que são obtidos a partir de args, declarado com um spread operator):
