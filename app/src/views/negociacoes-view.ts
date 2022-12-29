@@ -23,7 +23,7 @@ export class NegociacoesView extends View<Negociacoes> {
                                 ${negociacao.quantidade}
                             </td>
                             <td>
-                                ${negociacao.valor}
+                                ${this.formatarCurrency(negociacao.valor)}
                             </td>
                         </tr>
                     `;
@@ -36,5 +36,16 @@ export class NegociacoesView extends View<Negociacoes> {
     private formatar(data: Date): string {
         return new Intl.DateTimeFormat()
             .format(data);
+    }
+
+    // Apenas para melhorar a exibição do formato.
+    private formatarCurrency(number: number): string {
+        return new Intl.NumberFormat(
+                undefined, // Poderia ser 'pt-br' ao invés de undefined.
+                { 
+                    style: "currency",
+                    currency: "BRL"
+                }
+            ).format(number);
     }
 }
