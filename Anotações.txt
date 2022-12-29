@@ -45,3 +45,7 @@ O método apply em uma função recuperada de descriptor.value usa dois
 parâmetros: o contexto onde a função será executada (fornecendo "this", o
 próprio objeto que contém o método original será o contexto) e os argumentos
 do método (que são obtidos a partir de args, declarado com um spread operator):
+
+O JavaScript não aceita o uso de decorators: isso é uma particularidade do
+TypeScript. Quando o .ts é compilado, o .js gerado declara no início do código
+uma função que age como o decorator e no fim do código a função é invocada.
