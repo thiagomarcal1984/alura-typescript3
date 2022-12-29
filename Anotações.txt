@@ -31,9 +31,9 @@ está incompleta.
 
 Os decorator, na verdade, precisam retornar uma função com três parâmetros:
     return function (
-        target: any, 
-        propertyKey: string,
-        descriptor: PropertyDescriptor
+        target: any, // Recebe o construtor ou o Prototype da classe. 
+        propertyKey: string, // Nome do método que será invocado no decorator.
+        descriptor: PropertyDescriptor // Objeto para definir o comportamento.
     ) {
         ... corpo da função ...
     }
