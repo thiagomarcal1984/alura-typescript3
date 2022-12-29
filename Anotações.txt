@@ -28,3 +28,12 @@ opção no compilador: a experimentalDecorators.
 
 O código ainda não vai compilar, porque a declaração da função do decorator 
 está incompleta.
+
+Os decorator, na verdade, precisam retornar uma função com três parâmetros:
+    return function (
+        target: any, 
+        propertyKey: string,
+        descriptor: PropertyDescriptor
+    ) {
+        ... corpo da função ...
+    }
