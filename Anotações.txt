@@ -52,3 +52,27 @@ uma função que age como o decorator e no fim do código a função é invocada
 
 A pergunta: o método update em view.ts recebe dois decorators. Como saber 
 a ordem de execução deles?
+
+A resposta simples é: o decorator declarado primeiro é executado primeiro.
+Mas a mudança do comportamento do método decorado começa a partir do último
+decorator declarado.
+
+É a história da pilha de execução: o primeiro decorator roda primeiro, mas 
+retorna por último.
+
+Outro raciocínio para exemplificar decorators: 
+    class Product {
+        @IsGreaterThan('purchasePrice')
+        @IsPositive
+        @IsNumber
+        salesPrice: number
+    }
+
+    class Product {
+        salesPrice = IsGreaterThan('puchasePrice')(
+            IsPositive(
+                IsNumber(Product, 'salesPrice')
+            )
+        )
+    }
+
