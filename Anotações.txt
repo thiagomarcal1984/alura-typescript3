@@ -115,3 +115,10 @@ uma string e que esteja anotado com ele. O Angular usa muito decorators.
 
 Repare que o decorator @escapar não foi usado na classe View: a ideia é 
 escolher quais views eu quero que escape ou não.
+
+Até agora foram vistos os chamados decorators de métodos. Na próxima aula
+veremos os decorators de proprieades. No exemplo da próxima aula, as 
+propriedades dos elementos do DOM no controller NegociacaoController serão
+instanciadas via decorator de propriedade, e não mediante construtor. Assim,
+evitamos a repetição do comando de atribuição de HTMLInputElement que aparece
+atualmente em NegociacaoController.
