@@ -49,3 +49,6 @@ do método (que são obtidos a partir de args, declarado com um spread operator)
 O JavaScript não aceita o uso de decorators: isso é uma particularidade do
 TypeScript. Quando o .ts é compilado, o .js gerado declara no início do código
 uma função que age como o decorator e no fim do código a função é invocada.
+
+A pergunta: o método update em view.ts recebe dois decorators. Como saber 
+a ordem de execução deles?
