@@ -122,3 +122,6 @@ propriedades dos elementos do DOM no controller NegociacaoController serão
 instanciadas via decorator de propriedade, e não mediante construtor. Assim,
 evitamos a repetição do comando de atribuição de HTMLInputElement que aparece
 atualmente em NegociacaoController.
+
+Um decorator de propriedade é declarado com dois parâmetros: target e 
+propertyKey (o parâmetro descriptor nos decorators de método não se aplica).
