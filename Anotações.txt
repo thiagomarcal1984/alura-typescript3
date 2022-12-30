@@ -155,3 +155,11 @@ Código:
             );
         }
     }
+
+Novo problema: o getter de cada propriedade é sempre chamado, ou seja, 
+o HTMLInputElement é sempre reatribuído sempre que a propriedade é acessada.
+Como evitar isso?
+
+As variáveis setadas no decorator permanecem no "cache" do método/propriedade
+anotado(a). Testando a existência do elemento procurado nesse cache, evitamos
+as múltiplas reatribuições.

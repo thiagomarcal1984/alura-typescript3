@@ -8,10 +8,16 @@ export function domInjector(seletor: string) {
             e adicionando getter para a propriedade ${propertyKey}...`)
         // Este getter é invocado sempre que o método/propriedade identificado
         // por propertyKey for invocado.
+        
+        // Esta variável é "cacheada" para cada injeção do decorator.
+        let elemento: HTMLElement | null = null; 
+        
         const getter = function() {
-            const elemento = document.querySelector(seletor);
-            console.log(`Buscando o elemento do DOM com o seletor 
-            ${seletor} para injetar em ${propertyKey}.`);
+            if (!elemento) { // Teste para evitar múltiplas reatribuições.
+                elemento = <HTMLElement>document.querySelector(seletor);
+                console.log(`Buscando o elemento do DOM com o seletor 
+                    ${seletor} para injetar em ${propertyKey}.`);
+            }
             return elemento;
         }
         Object.defineProperty(
