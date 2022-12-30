@@ -125,3 +125,7 @@ atualmente em NegociacaoController.
 
 Um decorator de propriedade é declarado com dois parâmetros: target e 
 propertyKey (o parâmetro descriptor nos decorators de método não se aplica).
+
+Do jeito como o decorator domInjector está, ele não pode capturar a referência
+ao objeto que vai conter a proprieade. Nesse caso, a solução proposta é usar 
+métodos getters que representem as propriedades que queremos anotar.
