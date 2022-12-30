@@ -117,7 +117,7 @@ Repare que o decorator @escapar não foi usado na classe View: a ideia é
 escolher quais views eu quero que escape ou não.
 
 Até agora foram vistos os chamados decorators de métodos. Na próxima aula
-veremos os decorators de proprieades. No exemplo da próxima aula, as 
+veremos os decorators de propriedades. No exemplo da próxima aula, as 
 propriedades dos elementos do DOM no controller NegociacaoController serão
 instanciadas via decorator de propriedade, e não mediante construtor. Assim,
 evitamos a repetição do comando de atribuição de HTMLInputElement que aparece
@@ -127,5 +127,31 @@ Um decorator de propriedade é declarado com dois parâmetros: target e
 propertyKey (o parâmetro descriptor nos decorators de método não se aplica).
 
 Do jeito como o decorator domInjector está, ele não pode capturar a referência
-ao objeto que vai conter a proprieade. Nesse caso, a solução proposta é usar 
+ao objeto que vai conter a propriedade. Nesse caso, a solução proposta é usar 
 métodos getters que representem as propriedades que queremos anotar.
+
+O método Object.defineProperty() modifica o objeto passado como primeiro 
+parâmetro. O segundo parâmetro é o nome da propriedade que será alterada.
+E o terceiro parâmetro será o valor/função que será atribuída à propriedade
+referenciada no segundo parâmetro.
+
+Traduzindo: Object.defineProperty insere uma função (3o parm) com o nome da
+propertyKey (2o parm) no protótipo do objeto (1o parm).
+
+Código: 
+    export function domInjector(seletor: string) {
+        return function(
+            target: any,
+            propertyKey: string
+        ) {
+            const getter = function() {
+                const elemento = document.querySelector(seletor);
+                return elemento;
+            }
+            Object.defineProperty(
+                target, // Referência ao objeto que tem a propriedade.
+                propertyKey, // Nome da propriedade que será alterada.
+                { get: getter } // Novo valor da propriedade.
+            );
+        }
+    }
