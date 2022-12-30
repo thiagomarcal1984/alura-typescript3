@@ -163,3 +163,7 @@ Como evitar isso?
 As variáveis setadas no decorator permanecem no "cache" do método/propriedade
 anotado(a). Testando a existência do elemento procurado nesse cache, evitamos
 as múltiplas reatribuições.
+
+A pasta servidor-api contém um outro projeto que vai disponibilizar um 
+webservice. Instale as dependências a partir desse diretório. Depois, rode 
+o comando "npm start". Visite o caminho http://localhost:8080/dados .
