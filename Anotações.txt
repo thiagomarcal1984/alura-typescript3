@@ -76,3 +76,36 @@ Outro raciocínio para exemplificar decorators:
         )
     }
 
+Se o decorator não tiver parâmetros, você pode declarar diretamente a 
+função ao invés de declarar uma função que retorna uma função:
+    export function meuDecoratorSimples(
+        target: any,
+        propertyKey: string,
+        descriptor: PropertyDescriptor
+    ) {
+        ... lógica do decorator simples.
+    }
+
+    export function meuDecoratorComplexo() {
+        return function(
+            target: any,
+            propertyKey: string,
+            descriptor: PropertyDescriptor
+        ) {
+            ... lógica do decorator complexo.
+        }
+    }
+
+    @meuDecoratorSimples
+    @meuDecoratorComplexo()
+    public metodoDecorado () {
+        ... lógica do método decorado.
+    }
+
+Perceba que a invocação do decorator está diferente: como ela não é uma 
+"função que retorna função", não precisamos de usar parênteses para invocar 
+o decorator simplificado.
+
+Por questões de flexibilidade (necessidade de parametrizar o decorator), 
+e padronização do formato de invocação dos decorators, recomenda-se usar a 
+sintaxe mais complexa (com o wrapper) mesmo.
