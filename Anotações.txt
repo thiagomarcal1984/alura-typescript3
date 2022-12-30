@@ -167,3 +167,7 @@ as múltiplas reatribuições.
 A pasta servidor-api contém um outro projeto que vai disponibilizar um 
 webservice. Instale as dependências a partir desse diretório. Depois, rode 
 o comando "npm start". Visite o caminho http://localhost:8080/dados .
+
+Arrow functions são mais simples que as funções declaradas de forma completa.
+Se você precisa de usar referências a objetos (usando this) ou vai manipular
+eventos, NÃO use arrow functions.
