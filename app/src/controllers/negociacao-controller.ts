@@ -2,9 +2,9 @@ import { domInjector } from '../decorators/dom-injector.js';
 import { inspect } from '../decorators/inspect.js';
 import { logarTempoDeExecucao } from '../decorators/logar-tempo-de-execucao.js';
 import { DiasDaSemana } from '../enums/dias-da-semana.js';
-import { NegociacoesDoDia } from '../interfaces/negociacao-do-dia.js';
 import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
+import { NegociacoesService } from '../services/negociacoes-service.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 
@@ -19,6 +19,7 @@ export class NegociacaoController {
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
+    private negociacoesService = new NegociacoesService();
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
@@ -49,24 +50,13 @@ export class NegociacaoController {
     }
 
     public importaDados() :void {
-        fetch("http://localhost:8080/dados") // Indica o path a ser lido.
-            // O primeiro parm de then contém o retorno se resposta estiver ok.
-            .then(res => res.json())
-            .then((dados: NegociacoesDoDia[]) => {
-                // O retorno vai ser um Array de Negociações.
-                return dados.map(dado => {
-                    return new Negociacao(
-                        new Date(), 
-                        dado.vezes, // O JSON já converte para number.
-                        dado.montante
-                    )
-                })
-            })
+        this.negociacoesService
+            .obterNegociacoesDoDia()
             .then(negociacoesDeHoje => {
-                negociacoesDeHoje.map(negociacao => this.negociacoes.adiciona(negociacao))
-                // for(let negociacao of negociacoesDeHoje) {
-                //     this.negociacoes.adiciona(negociacao);
-                // }
+                // negociacoesDeHoje.map(negociacao => this.negociacoes.adiciona(negociacao))
+                for(let negociacao of negociacoesDeHoje) {
+                    this.negociacoes.adiciona(negociacao);
+                }
                 this.negociacoesView.update(this.negociacoes);
             })
     }

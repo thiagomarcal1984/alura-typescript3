@@ -187,3 +187,14 @@ Interfaces podem substituir retornos os retornos do tipo any. As vantagens de
 se usar interfaces são o autocomplete das IDE e a facilidade para refatorar o 
 código (por exemplo, a ação de renomear a propriedade declarada na interface 
 é propagada para todos os arquivos onde a interface for usada).
+
+Os retornos dos métodos fetch e then são do tipo Promise. Promises são objetos
+que controlam operações assíncronas, que executam callbacks. Assim, as promises
+permitem recuperar dados de webservices.
+
+A lógica de acesso aos webservices poderia ficar em uma camada de serviços, e 
+não na camada controladora. 
+
+O projeto está organizando o código by structure, mas há situações em que o 
+código deveria estar organizado by feature. By structure: services, interfaces,
+enums, decorators etc. By feature: cadastro de negociação, painel etc.
