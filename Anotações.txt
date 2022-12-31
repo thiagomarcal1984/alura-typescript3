@@ -171,3 +171,14 @@ o comando "npm start". Visite o caminho http://localhost:8080/dados .
 Arrow functions são mais simples que as funções declaradas de forma completa.
 Se você precisa de usar referências a objetos (usando this) ou vai manipular
 eventos, NÃO use arrow functions.
+
+Para consumir de uma API, use a biblioteca fetch. A função then dentro de fetch
+insere uma função de retorno ao concluir a busca. Tanto fetch quanto then 
+retornam um objeto do tipo Promise, mas o fetch retorna Promise<Response>.
+
+Cada then recebe como parâmetro um objeto do mesmo tipo retornado pelo then
+anterior (ou se o método pai for fetch, o primeiro parm é um Response).
+
+Um porém: ao instanciar cada negociação no método importaDados, os tipos de
+dados no JSON estão como any, o que pode invalidar seus valores para o 
+construtor da negociação.

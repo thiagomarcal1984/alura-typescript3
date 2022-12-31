@@ -47,8 +47,27 @@ export class NegociacaoController {
         this.atualizaView();
     }
 
-    importaDados() :void {
-        alert('Oi');
+    public importaDados() :void {
+        fetch("http://localhost:8080/dados") // Indica o path a ser lido.
+            // O primeiro parm de then contém o retorno se resposta estiver ok.
+            .then(res => res.json())
+            .then((dados: any[]) => {
+                // O retorno vai ser um Array de Negociações.
+                return dados.map(dado => {
+                    return new Negociacao(
+                        new Date(), 
+                        dado.vezes, // O JSON já converte para number.
+                        dado.montante
+                    )
+                })
+            })
+            .then(negociacoesDeHoje => {
+                negociacoesDeHoje.map(negociacao => this.negociacoes.adiciona(negociacao))
+                // for(let negociacao of negociacoesDeHoje) {
+                //     this.negociacoes.adiciona(negociacao);
+                // }
+                this.negociacoesView.update(this.negociacoes);
+            })
     }
     
     private ehDiaUtil(data: Date) {
