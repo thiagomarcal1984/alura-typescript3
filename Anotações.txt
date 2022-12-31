@@ -213,3 +213,14 @@ Interfaces não herdam de outras interfaces: elas estendem de outras interfaces.
 Combinar interfaces (por meio da extensão) facilita a implementação na classe,
 porque você não precisa implementar várias interfaces simples: basta 
 implementar uma interface composta.
+
+Ao ligar a opção "sourceMap" no tsconfig.json, o TypeScript gera os .js e 
+também os arquivos .map correspondentes. Eles permitem associar o .js ao .ts
+e também o debug do TypeScript (colocando breakpoints etc). Mas para o debug
+funcionar no navegador, é importante que os arquivos .ts estejam na pasta src,
+e os arquivos .js sejam gerados na pasta dist!
+
+Para inserir os breakpoints, use o comando Open file (Ctrl + P) do navegador e
+digite o nome do arquivo (outra caminho é clicar na aba Sources do browser).
+Depois você pode acessar os arquivos .ts, inserir os breakpoints e checar os
+valores das variáveis como qualquer debug de uma IDE.
