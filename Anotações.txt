@@ -182,3 +182,8 @@ anterior (ou se o método pai for fetch, o primeiro parm é um Response).
 Um porém: ao instanciar cada negociação no método importaDados, os tipos de
 dados no JSON estão como any, o que pode invalidar seus valores para o 
 construtor da negociação.
+
+Interfaces podem substituir retornos os retornos do tipo any. As vantagens de
+se usar interfaces são o autocomplete das IDE e a facilidade para refatorar o 
+código (por exemplo, a ação de renomear a propriedade declarada na interface 
+é propagada para todos os arquivos onde a interface for usada).

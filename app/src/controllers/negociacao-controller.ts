@@ -2,6 +2,7 @@ import { domInjector } from '../decorators/dom-injector.js';
 import { inspect } from '../decorators/inspect.js';
 import { logarTempoDeExecucao } from '../decorators/logar-tempo-de-execucao.js';
 import { DiasDaSemana } from '../enums/dias-da-semana.js';
+import { NegociacoesDoDia } from '../interfaces/negociacao-do-dia.js';
 import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
@@ -51,7 +52,7 @@ export class NegociacaoController {
         fetch("http://localhost:8080/dados") // Indica o path a ser lido.
             // O primeiro parm de then contém o retorno se resposta estiver ok.
             .then(res => res.json())
-            .then((dados: any[]) => {
+            .then((dados: NegociacoesDoDia[]) => {
                 // O retorno vai ser um Array de Negociações.
                 return dados.map(dado => {
                     return new Negociacao(
