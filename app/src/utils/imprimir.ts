@@ -1,9 +1,9 @@
-import { Negociacao } from "../models/negociacao.js";
+import { Imprimivel } from "./imprimivel.js";
 
-export function imprimir(...objetos: Array<any>): void {
+export function imprimir(...objetos: Array<Imprimivel>): void {
     // objetos.forEach(objeto => console.log(objeto.paraTexto()));
     for (let objeto of objetos) {
         console.log(objeto.paraTexto()) 
-        // Autocomplete não funciona direito, porque temos um array de any.
+        // Agora o autocomplete funciona direito.
     }
 }

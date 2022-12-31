@@ -200,3 +200,6 @@ código deveria estar organizado by feature. By structure: services, interfaces,
 enums, decorators etc. By feature: cadastro de negociação, painel etc.
 
 Agora houve apenas a criação do método paraTexto (toString) em algumas classes.
+
+No TypeScript, ao extender uma classe abstrata, precisamos chamar o construtor
+dessa classe abstrata.

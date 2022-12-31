@@ -46,8 +46,9 @@ export class NegociacaoController {
         }
         
         this.negociacoes.adiciona(negociacao);
-        const calopsita = 'miau'; // Deveria dar erro de compilação abaixo.
-        imprimir(negociacao, this.negociacoes, calopsita);
+        // const calopsita = 'miau'; // Calopsita não é Imprimivel. Vai dar erro.
+        // imprimir(negociacao, this.negociacoes, calopsita);
+        imprimir(negociacao, this.negociacoes);
         this.limparFormulario();
         this.atualizaView();
     }
