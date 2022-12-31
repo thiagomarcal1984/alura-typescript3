@@ -206,3 +206,5 @@ dessa classe abstrata.
 
 JavaScript não permite herança múltipla. Onde você precisar de algo parecido,
 substitua herança de classes abstratas por implementação de interfaces.
+
+Mudança para evitar duplicidade de negociações importadas do webservice.
