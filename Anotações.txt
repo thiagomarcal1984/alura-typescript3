@@ -208,3 +208,8 @@ JavaScript não permite herança múltipla. Onde você precisar de algo parecido
 substitua herança de classes abstratas por implementação de interfaces.
 
 Mudança para evitar duplicidade de negociações importadas do webservice.
+
+Interfaces não herdam de outras interfaces: elas estendem de outras interfaces.
+Combinar interfaces (por meio da extensão) facilita a implementação na classe,
+porque você não precisa implementar várias interfaces simples: basta 
+implementar uma interface composta.
